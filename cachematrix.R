@@ -10,7 +10,7 @@ set<-function(y){
     matinv<-NULL}
 
 get<-function() x
-setinv<-function(inverse) matinv<-solve(inverse)
+setinv<-function(inv) matinv<-inv
 getinv<-function() matinv
 list(set=set,get=get,setinv=setinv,getinv=getinv)
 }
@@ -25,8 +25,8 @@ cacheSolve <- function(x, ...) {
     message("getting cached data")
     return(matinv)
   }
-  matinv<-x$get()
-  inverse<-solve(matinv)
+  data<-x$get()
+  inverse<-solve(data)
   x$setinv(inverse)
-  matinv
+  inverse
 }
